@@ -59,6 +59,23 @@ public class StudentController {
             return ResponseEntity.status(400).body("not found");
         }
     }
+  @GetMapping("/students/age/{minAge}/{maxAge}")
+    public ResponseEntity getStudentsByAgeRange(@PathVariable int minAge, @PathVariable int maxAge) {
+        List<Student> students = studentService.getStudentsByAgeRange(minAge, maxAge);
+        if (students.isEmpty()) {
+            return ResponseEntity.status(400).body("not found");
+        }
+        return ResponseEntity.status(200).body(students);
+    }
 
+
+    @GetMapping("/students/highestscore")
+    public ResponseEntity getStudentsWithHighestScore() {
+        List<Student> students = studentService.getStudentsWithHighestScore();
+        if (students.isEmpty()) {
+            return ResponseEntity.status(400).body("not found");
+        }
+        return ResponseEntity.status(200).body(students);
+    }
 
 }
