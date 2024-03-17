@@ -26,5 +26,8 @@ public class Exam {
     @NotBlank(message = "Subject cannot be blank")
     private String subject;
 
+     @NotNull(message = "score cant be null")
+    private Double score;
+
 
 }
