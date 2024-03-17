@@ -47,6 +47,31 @@ public class StudentService {
         return students.removeIf(student -> student.getId().equals(id));
     }
 
+    
+    public List<Student> getStudentsByAgeRange(int minAge, int maxAge) {
+        List<Student> filteredStudents = new ArrayList<>();
+        for (Student student : students) {
+            if (student.getAge() >= minAge && student.getAge() <= maxAge) {
+                filteredStudents.add(student);
+            }
+        }
+        return filteredStudents;
+    }
+
+    public List<Student> getStudentsWithHighestScore() {
+        double maxScore = 0;
+        List<Student> highestScoringStudents = new ArrayList<>();
+        for (Student student : students) {
+            if (student.getScore() > maxScore) {
+                maxScore = student.getScore();
+                highestScoringStudents.clear();
+                highestScoringStudents.add(student);
+            } else if (student.getScore() == maxScore) {
+                highestScoringStudents.add(student);
+            }
+        }
+        return highestScoringStudents;
+    }
 }
 
 
