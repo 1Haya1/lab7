@@ -68,7 +68,14 @@ public class ExamService {
         }
         return null;
     }
-
+ public ResponseEntity updateExamScore(Integer Id, Double score) {
+        Exam examToUpdate = getExamById(Id);
+        if (examToUpdate == null) {
+            return ResponseEntity.status(400).body("not found");
+        }
+        examToUpdate.setScore(score);
+        return ResponseEntity.status(200).body("Exam score updated");
+    }
 
 }
 
@@ -77,4 +84,4 @@ public class ExamService {
 
 
 
-}
+
