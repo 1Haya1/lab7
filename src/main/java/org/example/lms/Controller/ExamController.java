@@ -90,4 +90,9 @@ public class ExamController {
         }
         return ResponseEntity.status(404).body("exam not found");
     }
+      @PutMapping("/exams/{Id}/score")
+    public ResponseEntity updateExamScore(@PathVariable Integer Id, @RequestParam("score") Double score) {
+        ResponseEntity responseEntity = examService.updateExamScore(Id, score);
+        return ResponseEntity.status(responseEntity.getStatusCode()).body(responseEntity.getBody());
+    }
 }
